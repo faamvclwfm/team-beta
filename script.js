@@ -1,40 +1,16 @@
 function addNewForm() {
     let formSection = document.getElementById('form-section');
-    let newForm = document.createElement('div');
-    newForm.classList.add('container', 'form-instance');
-    newForm.innerHTML = `
-        <h2>Nearshore Calculator</h2>
-        <label for="role">Role:</label>
-        <select class="role">
-            <option value="500">Software Developer</option>
-            <option value="600">IT Project Manager</option>
-        </select>
-        <label for="level">Level:</label>
-        <select class="level">
-            <option value="1">Junior</option>
-            <option value="1.2">Midlevel</option>
-            <option value="1.5">Senior</option>
-        </select>
-        <label for="region">Region:</label>
-        <select class="region">
-            <option value="18.5">Eastern Europe</option>
-            <option value="17.5">Western Europe</option>
-        </select>
-        <label for="developers">Number of Developers:</label>
-        <input type="number" class="developers" min="1" value="1">
-        <label for="duration">Duration (months):</label>
-        <input type="number" class="duration" min="1" value="1" oninput="updateSummary()">
-        <button class="remove-btn" onclick="removeForm(this)">Remove</button>
-    `;
+    let newForm = document.querySelector('.form-instance').cloneNode(true);
+    newForm.querySelectorAll('input, select').forEach(input => input.value = input.defaultValue);
     formSection.appendChild(newForm);
     updateSummary();
 }
 
 function removeForm(button) {
     let formSection = document.getElementById('form-section');
-    button.parentElement.remove();
-    if (formSection.children.length === 0) {
-        document.getElementById('summary').style.display = 'none';
+    if (formSection.children.length =1) {
+        button.parentElement.remove();
+        
     }
     updateSummary();
 }
@@ -53,16 +29,16 @@ function updateSummary() {
         let duration = parseInt(form.querySelector('.duration').value);
         let cost = developers * parseFloat(role.value) * parseFloat(level.value) * duration * parseFloat(region.value);
         totalCost += cost;
-
-        let row = `<tr>
-            <td>${role.options[role.selectedIndex].text}</td>
-            <td>${level.options[level.selectedIndex].text}</td>
-            <td>${region.options[region.selectedIndex].text}</td>
-            <td>${developers}</td>
-            <td>${duration}</td>
-            <td>${cost.toFixed(2)} €</td>
-        </tr>`;
+            let row = `<tr>
+                <td>${role.options[role.selectedIndex].text}</td>
+                <td>${level.options[level.selectedIndex].text}</td>
+                <td>${cost.toFixed(2)} €</td>
+            </tr>`;
+        
+        
         summaryBody.innerHTML += row;
+
+
     });
     
     let lowerBound = totalCost * 0.9;

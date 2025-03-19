@@ -7,56 +7,66 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="form-section">
-        <div class="container form-instance">
-            <h2>Nearshore Calculator</h2>
-            <label for="role">Role:</label>
-            <select class="role">
-                <option value="500">Software Developer</option>
-                <option value="600">IT Project Manager</option>
-            </select>
+    <div class="mainSection">
 
-            <label for="level">Level:</label>
-            <select class="level">
-                <option value="1">Junior</option>
-                <option value="1.2">Midlevel</option>
-                <option value="1.5">Senior</option>
-            </select>
-
-            <label for="region">Region:</label>
-            <select class="region">
-                <option value="18.5">Eastern Europe</option>
-                <option value="17.5">Western Europe</option>
-            </select>
-
-            <label for="developers">Number of Developers:</label>
-            <input type="number" class="developers" min="1" value="1">
-
-            <label for="duration">Duration (months):</label>
-            <input type="number" class="duration" min="1" value="1" oninput="updateSummary()">
-            
-            <button class="remove-btn" onclick="removeForm(this)">Remove</button>
+        <div id="form-section">
+            <div class="container form-instance">
+                <h2>Nearshore Calculator</h2>
+                <label for="role">Role</label>
+                <select class="role">
+                    <option value="">Select Role</option>
+                    <option value="500">Software Developer</option>
+                    <option value="600">IT Project Manager</option>
+                    <option value="DevOps Engineer">DevOps Engineer</option>
+                    <option value="Tester (manual)">Tester (manual)</option>
+                    <option value="AI Architect">AI Architect</option>
+                    <option value="Data Scientist">Data Scientist</option>
+                    <option value="Product Owner">Product Owner</option>
+                </select>
+    
+                <label for="level">Level</label>
+                <select class="level">
+                    <option value="">Select Level</option>
+                    <option value="1">Junior</option>
+                    <option value="1.2">Midlevel</option>
+                    <option value="1.5">Senior</option>
+                </select>
+    
+                <label for="region">Region</label>
+                <select class="region">
+                    <option value="">Select Region</option>
+                    <option value="18.5">Eastern Europe</option>
+                    <option value="17.5">Western Europe</option>
+                    <option value="North Africa">North Africa</option>
+                    <option value="Southeast Asia">Southeast Asia</option>
+                </select>
+    
+                <label for="developers">Number of IT specialist</label>
+                <input type="number" class="developers" min="1" value="1">
+    
+                <label for="duration">Duration (month)</label>
+                <input type="number" class="duration" min="1" oninput="updateSummary()">
+                
+                <button onclick="addNewForm()" id="addMemberBtn">Add New Member</button>
+                <button class="remove-btn" onclick="removeForm(this)">Remove</button>
+            </div>
         </div>
-    </div>
-    <button onclick="addNewForm()">Add New Member</button>
+        <div id="summary">
+            <h3>Project Summary</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Level</th>
+                        <th>Daily rate</th>
+                    </tr>
+                </thead>
+                <tbody id="summary-body"></tbody>
+            </table>
+            <p><strong>Price indication (+-10%):</strong> <span id="price-indication"></span></p>
+        </div>
 
-    <div id="summary">
-        <h3>Project Summary</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Role</th>
-                    <th>Level</th>
-                    <th>Region</th>
-                    <th>Number</th>
-                    <th>Duration</th>
-                    <th>Cost</th>
-                </tr>
-            </thead>
-            <tbody id="summary-body"></tbody>
-        </table>
-        <p><strong>Price indication:</strong> <span id="price-indication"></span></p>
-    </div>
+    </div>    
 
     <script src="script.js">
         

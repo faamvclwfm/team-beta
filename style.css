@@ -1,41 +1,59 @@
 body {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    background-color: #f4f4f4;
+    background-color: #ffffff;
+    padding: 20px;
+}
+.mainSection{
+    margin: 0 auto;
+    width: 600px;
+    border: 1px solid rgb(200,204,210);
+    justify-items: center;
+    padding: 20px 20px;
+    border-radius: 12px;
 }
 .container {
-    max-width: 600px;
-    background: white;
+    background-color: rgb(244,244,244);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 10px;
+    width: 500px;
+    margin-bottom: 20px;
+    border:1px solid rgb(200 204 210)
+
 }
-label, select, input {
+select, input {
     display: block;
+    margin: 10px 0;
+    padding: 10px;
     width: 100%;
-    margin-bottom: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+input{
+    width: 97%;
 }
 button {
-    background: #007BFF;
-    color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 10px;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    border-radius: 5px;
-    margin-top: 5px;
+}
+#addMemberBtn {
+    background-color: rgb(13,17,31);
+    color: #fff;
 }
 .remove-btn {
     background: red;
+    color: #fff;
 }
 #summary {
     display: none;
     margin-top: 20px;
-    padding: 15px;
-    background: #fff;
+    padding: 20px;
+    background: rgb(244,244,244);
     border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    border: 1px solid rgb(200 204 210);
+    
 }
 table {
     width: 100%;
@@ -44,8 +62,11 @@ table {
 th, td {
     border: 1px solid #ddd;
     padding: 8px;
-    text-align: left;
+    text-align: center;
 }
 th {
-    background-color: #f4f4f4;
+    background-color: rgb(224,225,231);
+}
+td{
+    background-color: rgb(240,241,243);
 }
