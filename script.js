@@ -1,15 +1,40 @@
 function addNewForm() {
     let formSection = document.getElementById('form-section');
-    let newForm = document.querySelector('.form-instance').cloneNode(true);
-    newForm.querySelectorAll('input, select').forEach(input => input.value = input.defaultValue);
+    let newForm = document.createElement('div');
+    newForm.classList.add('container', 'form-instance');
+    newForm.innerHTML = `
+        <h2>Nearshore Calculator</h2>
+        <label for="role">Role:</label>
+        <select class="role">
+            <option value="500">Software Developer</option>
+            <option value="600">IT Project Manager</option>
+        </select>
+        <label for="level">Level:</label>
+        <select class="level">
+            <option value="1">Junior</option>
+            <option value="1.2">Midlevel</option>
+            <option value="1.5">Senior</option>
+        </select>
+        <label for="region">Region:</label>
+        <select class="region">
+            <option value="18.5">Eastern Europe</option>
+            <option value="17.5">Western Europe</option>
+        </select>
+        <label for="developers">Number of Developers:</label>
+        <input type="number" class="developers" min="1" value="1">
+        <label for="duration">Duration (months):</label>
+        <input type="number" class="duration" min="1" value="1" oninput="updateSummary()">
+        <button class="remove-btn" onclick="removeForm(this)">Remove</button>
+    `;
     formSection.appendChild(newForm);
     updateSummary();
 }
 
 function removeForm(button) {
     let formSection = document.getElementById('form-section');
-    if (formSection.children.length > 1) {
-        button.parentElement.remove();
+    button.parentElement.remove();
+    if (formSection.children.length === 0) {
+        document.getElementById('summary').style.display = 'none';
     }
     updateSummary();
 }
