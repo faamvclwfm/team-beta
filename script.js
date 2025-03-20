@@ -41,25 +41,43 @@ function updateSummary() {
     let forms = document.querySelectorAll('.form-instance');
     let summaryBody = document.getElementById('summary-body');
     let summarySection = document.getElementById('summary');
-    summarySection.style.display = 'none';
-
+    let priceIndication = document.getElementById('price-indication');
+    
     summaryBody.innerHTML = '';
     let totalCost = 0;
+    let hasValidData = false;
+
+    // Workdays per month per region (as per the document)
+    const workDaysPerMonth = {
+        "Eastern Europe": 18.5,
+        "Western Europe": 17.5,
+        "North Africa": 17.5,
+        "Offshore": 19.5
+    };
 
     forms.forEach(form => {
         let role = form.querySelector('.role');
         let level = form.querySelector('.level');
         let region = form.querySelector('.region');
 
-        if (!role || !level || !region || 
-            role.selectedIndex < 0 || level.selectedIndex < 0 || region.selectedIndex < 0) {
-            return; // Skip this iteration if any of the elements are not valid
+        if (!role.value || !level.value || !region.value) {
+            return;
         }
 
         let developers = parseInt(form.querySelector('.developers').value) || 0;
         let duration = parseInt(form.querySelector('.duration').value) || 0;
-        let cost = developers * parseFloat(role.value) * parseFloat(level.value) * duration * parseFloat(region.value);
+        
+        let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
+
+        if (developers <= 0 || duration <= 0 || workDays === 0) {
+            return;
+        }
+
+        hasValidData = true;
+
+        let cost = developers * parseFloat(role.value) * parseFloat(level.value) * duration * workDays;
         totalCost += cost;
+
         let row = `<tr>
             <td>${role.options[role.selectedIndex].text}</td>
             <td>${level.options[level.selectedIndex].text}</td>
@@ -68,9 +86,13 @@ function updateSummary() {
         
         summaryBody.innerHTML += row;
     });
-    
-    let lowerBound = totalCost * 0.9;
-    let upperBound = totalCost * 1.1;
-    document.getElementById('price-indication').innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
-    document.getElementById('summary').style.display = forms.length > 0 ? 'block' : 'none';
+
+    if (hasValidData) {
+        let lowerBound = totalCost * 0.9;
+        let upperBound = totalCost * 1.1;
+        priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
+        summarySection.style.display = 'block';
+    } else {
+        summarySection.style.display = 'none';
+    }
 }

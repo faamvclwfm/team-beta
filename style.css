@@ -49,24 +49,43 @@ button {
     display: none;
     margin-top: 20px;
     padding: 20px;
-    background: rgb(244,244,244);
+    background: #f4f4f4;
     border-radius: 8px;
-    width: 80%;
-    border: 1px solid rgb(200 204 210);
-    
+    width: 500px;
+    max-width: 600px;
+    border: 1px solid #c8ccd2;
 }
+
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 15px;
 }
+
 th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
+    padding: 12px;
+    text-align: center; /* Center align all table text */
+    border: 2px solid #c8ccd2;
 }
+
 th {
-    background-color: rgb(224,225,231);
+    background-color: #e0e1e7;
+    font-weight: bold;
 }
-td{
-    background-color: rgb(240,241,243);
+
+td {
+    background-color: #f0f1f3;
+    
+}
+
+/* Table footer styling */
+tfoot td {
+    font-weight: bold;
+    background-color: #e0e1e7;
+    padding: 14px;
+    border: 2px solid #c8ccd2;
+}
+
+tfoot td:first-child {
+    text-align: left; /* Left align only the first column */
 }
