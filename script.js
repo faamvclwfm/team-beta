@@ -42,7 +42,7 @@ function updateSummary() {
     let summaryBody = document.getElementById('summary-body');
     let summarySection = document.getElementById('summary');
     let priceIndication = document.getElementById('price-indication');
-    
+
     summaryBody.innerHTML = '';
     let totalCost = 0;
     let hasValidData = false;
@@ -53,6 +53,12 @@ function updateSummary() {
         "Western Europe": 17.5,
         "North Africa": 17.5,
         "Offshore": 19.5
+    };
+
+    // Daily rates mapping
+    const dailyRates = {
+        "IT Project Manager": { "Midlevel": 400, "Senior": 500 },
+        "Software Developer": { "Midlevel": 500, "Senior": 600 }
     };
 
     forms.forEach(form => {
@@ -80,10 +86,8 @@ function updateSummary() {
             errorMessage.textContent = 'At least 1 specialist required';
             errorMessage.classList.add('error-message');
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
-
-            // **Clear the duration field if IT specialists input is invalid**
-            durationInput.value = ''; 
-            return; // Stop processing this form
+            durationInput.value = ''; // Clear duration field
+            return;
         }
 
         // Validate "Duration"
@@ -92,22 +96,30 @@ function updateSummary() {
             errorMessage.textContent = 'At least 1 month required';
             errorMessage.classList.add('error-message');
             durationInput.parentNode.insertBefore(errorMessage, durationInput.nextSibling);
-            return; // Stop processing this form
+            return;
         }
 
         if (workDays === 0) {
             return;
         }
 
+        // Get selected text values from dropdowns
+        let roleName = role.options[role.selectedIndex].text;
+        let levelName = level.options[level.selectedIndex].text;
+
+        // Get the correct daily rate from the mapping
+        let dailyRate = dailyRates[roleName]?.[levelName] || 0;
+
+        // **Calculate cost** (Total cost based on duration, specialists, and workdays)
+        let cost = developers * dailyRate * duration * workDays;
+        totalCost += cost;
         hasValidData = true;
 
-        let cost = developers * parseFloat(role.value) * parseFloat(level.value) * duration * workDays;
-        totalCost += cost;
-
+        // **Add row to summary table**
         let row = `<tr>
-            <td>${role.options[role.selectedIndex].text}</td>
-            <td>${level.options[level.selectedIndex].text}</td>
-            <td>${cost.toFixed(2)} €</td>
+            <td>${roleName}</td>
+            <td>${levelName}</td>
+            <td>${dailyRate} €</td> <!-- Daily rate column -->
         </tr>`;
         
         summaryBody.innerHTML += row;
@@ -122,3 +134,4 @@ function updateSummary() {
         summarySection.style.display = 'none';
     }
 }
+
