@@ -1,10 +1,19 @@
 function addNewForm() {
     let formSection = document.getElementById('form-section');
     let newForm = document.querySelector('.form-instance').cloneNode(true);
-    newForm.querySelectorAll('input, select').forEach(input => input.value = input.defaultValue);
+    newForm.querySelectorAll('input, select').forEach(input => {
+        input.value = input.defaultValue; // Reset input values
+        if (input.tagName === 'SELECT') {
+            input.selectedIndex = 0; // Set select options to default
+        }
+    });
     formSection.appendChild(newForm);
     
-    // Add event listeners to update summary on input change
+    // Add event listeners to update summary on input change for initial form
+    document.querySelectorAll('.form-instance input, .form-instance select').forEach(input => {
+        input.addEventListener('input', updateSummary);
+        input.addEventListener('change', updateSummary);
+    });
     newForm.querySelectorAll('input, select').forEach(input => {
         input.addEventListener('input', updateSummary);
         input.addEventListener('change', updateSummary);
