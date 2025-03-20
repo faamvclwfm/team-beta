@@ -1,3 +1,5 @@
+/* Add your styles here */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
@@ -89,6 +91,7 @@ tfoot td {
 tfoot td:first-child {
     text-align: left; /* Left align only the first column */
 }
+
 .error-message {
     color: red;
     font-size: 12px;
