@@ -3,6 +3,13 @@ function addNewForm() {
     let newForm = document.querySelector('.form-instance').cloneNode(true);
     newForm.querySelectorAll('input, select').forEach(input => input.value = input.defaultValue);
     formSection.appendChild(newForm);
+    
+    // Add event listeners to update summary on input change
+    newForm.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', updateSummary);
+        input.addEventListener('change', updateSummary);
+    });
+
     updateSummary();
 }
 
