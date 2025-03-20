@@ -47,7 +47,7 @@ function updateSummary() {
     let totalCost = 0;
     let hasValidData = false;
 
-    // Workdays per month per region (as per the document)
+    // Workdays per month per region
     const workDaysPerMonth = {
         "Eastern Europe": 18.5,
         "Western Europe": 17.5,
@@ -59,17 +59,43 @@ function updateSummary() {
         let role = form.querySelector('.role');
         let level = form.querySelector('.level');
         let region = form.querySelector('.region');
+        let developersInput = form.querySelector('.developers');
+        let durationInput = form.querySelector('.duration');
 
         if (!role.value || !level.value || !region.value) {
             return;
         }
 
-        let developers = parseInt(form.querySelector('.developers').value) || 0;
-        let duration = parseInt(form.querySelector('.duration').value) || 0;
-        
+        let developers = parseInt(developersInput.value) || 0;
+        let duration = parseInt(durationInput.value) || 0;
         let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
 
-        if (developers <= 0 || duration <= 0 || workDays === 0) {
+        // Remove existing error messages
+        developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
+        durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
+
+        // Validate "Number of IT Specialists"
+        if (developers < 1) {
+            let errorMessage = document.createElement('p');
+            errorMessage.textContent = 'At least 1 specialist required';
+            errorMessage.classList.add('error-message');
+            developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
+
+            // **Clear the duration field if IT specialists input is invalid**
+            durationInput.value = ''; 
+            return; // Stop processing this form
+        }
+
+        // Validate "Duration"
+        if (duration < 1) {
+            let errorMessage = document.createElement('p');
+            errorMessage.textContent = 'At least 1 month required';
+            errorMessage.classList.add('error-message');
+            durationInput.parentNode.insertBefore(errorMessage, durationInput.nextSibling);
+            return; // Stop processing this form
+        }
+
+        if (workDays === 0) {
             return;
         }
 

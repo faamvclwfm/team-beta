@@ -89,3 +89,8 @@ tfoot td {
 tfoot td:first-child {
     text-align: left; /* Left align only the first column */
 }
+.error-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
