@@ -1,4 +1,14 @@
 
+document.querySelectorAll('input, select').forEach(input => {
+    input.value = input.defaultValue;
+    if (input.tagName === 'SELECT') {
+        input.selectedIndex = 0;
+        
+    }
+
+    input.addEventListener('input', updateSummary);
+    input.addEventListener('change', updateSummary);
+});
 function addNewForm() {
     let formSection = document.getElementById('form-section');
     let newForm = document.querySelector('.form-instance').cloneNode(true);
@@ -48,7 +58,6 @@ function updateSummary() {
     let forms = document.querySelectorAll('.form-instance');
     let summaryBody = document.getElementById('summary-body');
     let priceIndication = document.getElementById('price-indication');
-    
 
     summaryBody.innerHTML = ''; 
     let totalCost = 0;
@@ -83,7 +92,7 @@ function updateSummary() {
 
         developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
         durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
-
+        
         // Validate "Number of IT Specialists"
         if (developers < 1) {
             let errorMessage = document.createElement('p');
@@ -121,8 +130,6 @@ function updateSummary() {
         summaryBody.innerHTML += row;
     });
 
-    document.getElementById('summary').style.display = 'block'; // Always visible
-
     if (hasValidData) {
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
@@ -132,6 +139,8 @@ function updateSummary() {
         priceIndication.innerText = "—"; // Show dash if no valid data
     }
 }
+
+
 document.getElementById('submitButton').addEventListener('click',()=>{
     let errorMessageInput = document.getElementById('mandatoryEmailParagraph')
     let errorMessageCheckBox = document.getElementById('mandatoryCheckBoxParagraph')
