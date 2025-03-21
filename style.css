@@ -145,14 +145,18 @@ input[type="checkbox"] {
 #submitButton {
     background-color: rgb(49, 64, 118);
     color: #fff;
-    padding: 12px 18px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-bottom: 1%;
+    border-radius: 5px;
     cursor: pointer;
     width: 100%;
     box-sizing: border-box;
-    font-size: 16px;
+    
 }
+
 
 #mandatoryCheckBoxParagraph {
     text-align: center;
@@ -206,5 +210,5 @@ input[type="checkbox"] {
 }
 
 .btn:hover {
-    opacity: 0.9; 
+    opacity: 0.9; /* n*/
 }
