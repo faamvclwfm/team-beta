@@ -81,40 +81,37 @@ function updateSummary() {
         let duration = parseInt(durationInput.value) || 0;
         let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
 
-        // Role and Level Handling
         let selectedRole = role.value ? role.options[role.selectedIndex].text : "—";
         let selectedLevel = level.value ? level.options[level.selectedIndex].text : "—";
         let dailyRate = level.value ? dailyRates[selectedLevel] + " €" : "—";
 
-        // Remove previous error messages
         developersInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
         durationInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
 
         developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
         durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
         
-        // Validate "Number of IT Specialists"
         if (developers < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 specialist required';
             errorMessage.classList.add('error-message');
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
 
-            // **Clear the duration field if IT specialists input is invalid**
+        
             durationInput.value = ''; 
-            return; // Stop processing this form
+            return; 
         }
 
-        // Validate "Duration"
+        
         if (duration < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 month required';
             errorMessage.classList.add('error-message');
             durationInput.parentNode.insertBefore(errorMessage, durationInput.nextSibling);
-            return; // Stop processing this form
+            return; 
         }
 
-        // If all required values are selected, calculate cost
+       
         if (role.value && level.value && region.value && developers >= 1 && duration >= 1 && workDays > 0) {
             hasValidData = true;
             let cost = developers * dailyRates[selectedLevel] * duration * workDays;
@@ -134,9 +131,9 @@ function updateSummary() {
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
         priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
-        additionalOptions.style.display = "block"; // Show additional options
+        additionalOptions.style.display = "block"; 
     } else {
-        priceIndication.innerText = "—"; // Show dash if no valid data
+        priceIndication.innerText = "—"; 
     }
 }
 
