@@ -78,7 +78,7 @@ button {
 
 table {
     width: 100%; 
-    border-collapse: collapse;
+    border-collapse: collapse; 
 }
 
 th, td {
@@ -163,6 +163,15 @@ input[type="checkbox"] {
         width: 100%;
         padding: 15px;
     }
+    td, th {
+        padding: 8px; 
+        border: 1px solid #ccc; 
+    }
+    #summary {
+    overflow-x: auto; 
+    -webkit-overflow-scrolling: touch; 
+    max-width: 100%; 
+    }
     
    
 }
@@ -197,5 +206,5 @@ input[type="checkbox"] {
 }
 
 .btn:hover {
-    opacity: 0.9; /* n */
+    opacity: 0.9; 
 }
