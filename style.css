@@ -5,7 +5,7 @@ body {
 }
 .mainSection{
     margin: 0 auto;
-    width: 600px;
+    width: 700px;
     border: 1px solid rgb(200,204,210);
     justify-items: center;
     padding: 20px 20px;
@@ -15,7 +15,7 @@ body {
     background-color: rgb(244,244,244);
     padding: 20px;
     border-radius: 8px;
-    width: 500px;
+    width: 600px;
     margin-bottom: 20px;
     border:1px solid rgb(200 204 210)
 
@@ -52,7 +52,7 @@ button {
     padding: 20px;
     background: #f4f4f4;
     border-radius: 8px;
-    width: 500px;
+    width: 600px;
     max-width: 600px;
     border: 1px solid #c8ccd2;
 }
@@ -95,4 +95,28 @@ tfoot td:first-child {
     color: red;
     font-size: 12px;
     margin-top: 5px;
+}
+.option-item {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    margin-bottom: 1%;
+    color: rgb(83, 83, 83);
+    font-weight: bold;
+    padding: 0;
+}
+
+.option-item label {
+    max-width: 530px;
+}
+input[type="checkbox"] {
+    width: 10%;
+    
+} 
+.checkboxesField, .inputsField{
+    margin-bottom: 5%;
+}
+.inputsField{
+    width: 560px;
+    justify-self: center;
 }

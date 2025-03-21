@@ -50,7 +50,7 @@
                 <button class="remove-btn" onclick="removeForm(this)">Remove</button>
             </div>
         </div>
-        <div id="summary"  style="display: block;">
+        <div id="summary" style="display: block;">
             <table>
                 <thead>
                     <tr>
@@ -70,13 +70,26 @@
         </div>
 
         <div id="additional-options" class="container" style="display: none;">
-            <label class="checkbox-label"><input type="checkbox"> Option 1</label>
-            <label class="checkbox-label"><input type="checkbox"> Option 2</label>
-            <label class="checkbox-label"><input type="checkbox"> Option 3</label>
-            <input type="text" class="input-field" placeholder="Input 1">
-            <input type="text" class="input-field" placeholder="Input 2">
-            <input type="text" class="input-field" placeholder="Input 3">
-            <label class="checkbox-label"><input type="checkbox"> Additional Option</label>
+            <div class="checkboxesField">
+                <div class="option-item">
+                    <input type="checkbox"><label class="checkbox-label">Personalized price indication report as PDF and project tips</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" ><label class="checkbox-label">Free Nearshore Readiness Test as PDF</label>
+                </div>
+                <div class="option-item">
+                    <input type="checkbox" ><label class="checkbox-label">Invitation for a free webinar where you learn how to save 30-60% of your IT cost with nearshoring</label>
+                </div>
+            </div>
+            <div class="inputsField">
+                <input type="text" class="input-field" placeholder="First name" >
+                <input type="text" class="input-field" placeholder="Last name" >
+                <input type="text" class="input-field" placeholder="E-mail" required>
+            </div>
+            <div class="option-item">
+                <input type="checkbox"required><label class="checkbox-label"> I agree to the privacy policy of nearshorefriends and give my consent to the processing of my personal data (mandatory)</label>
+            </div>
+            <input type="submit">
         </div>
 
     </div>    
