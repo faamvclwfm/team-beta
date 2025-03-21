@@ -10,7 +10,12 @@ function addNewForm() {
     formSection.appendChild(newForm);
     
     // Add event listeners to update summary on input change for initial form
-    document.querySelectorAll('.form-instance input, .form-instance select').forEach(input => {
+    newForm.querySelectorAll('input, select').forEach(input => {
+        input.addEventListener('input', updateSummary);
+        input.addEventListener('change', updateSummary);
+    });
+    // Ensure summary updates immediately on any input change
+    newForm.querySelectorAll('input, select').forEach(input => {
         input.addEventListener('input', updateSummary);
         input.addEventListener('change', updateSummary);
     });
