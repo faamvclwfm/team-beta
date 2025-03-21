@@ -5,11 +5,11 @@ body {
 }
 
 .mainSection {
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Stack items vertically */
+    display: flex; 
+    flex-direction: column; 
     margin: 0 auto;
     width: 100%;
-    max-width: 37.5em; /* Keep this value for large screens */
+    max-width: 37.5em; 
     border: 1px solid rgb(200,204,210);
     padding: 30px 30px;
     border-radius: 12px;
@@ -17,7 +17,7 @@ body {
 }
 
 #form-section {
-    flex-grow: 1; /* Allow the form to grow */
+    flex-grow: 1; 
 }
 
 
@@ -29,8 +29,7 @@ body {
     margin-bottom: 20px;
     border: 1px solid rgb(200 204 210);
     box-sizing: border-box;
-    /* Ensuring it takes full width up to a certain limit */
-    max-width: 37.5em; /* 600px */
+    max-width: 37.5em; 
 }
 
 select, input {
@@ -65,19 +64,19 @@ button {
 }
 
 #summary {
-    display: block; /* Ensure it's displayed */
+    display: block; 
     margin-top: 20px;
     padding: 20px;
     background: #f4f4f4;
     border-radius: 8px;
     width: 100%;
-    max-width: 37.5em; /* To match the container */
+    max-width: 37.5em; 
     border: 1px solid #c8ccd2;
     box-sizing: border-box;
 }
 
 table {
-    width: 100%; /* Ensure table takes full width */
+    width: 100%; 
     border-collapse: collapse;
 }
 
@@ -167,35 +166,35 @@ input[type="checkbox"] {
    
 }
 .summary-table {
-    margin-bottom: 20px; /* Adjust this value as needed */
+    margin-bottom: 20px; 
 }
 .checkbox-label {
     display: flex;
     align-items: center;
-    margin-bottom: 10px; /* Adjusts the gap */
+    margin-bottom: 10px; 
 }
 
 .checkbox-label input {
-    margin-right: 10px; /* Adjusts the gap between the checkbox and the label */
+    margin-right: 10px; 
 }
 
 .btn {
-    padding: 10px 20px; /* Adjust padding */
-    font-size: 16px; /* Adjust font size */
+    padding: 10px 20px; 
+    font-size: 16px; 
     margin-bottom: 1%;
 }
 .btn-primary { 
     color: white;
     border: none;
-    border-radius: 5px; /* Optional rounded corners */
+    border-radius: 5px; 
 }
 .btn-danger {
-    background-color: #dc3545; /* Danger button color */
+    background-color: #dc3545; 
     color: white;
     border: none;
-    border-radius: 5px; /* Optional rounded corners */
+    border-radius: 5px; 
 }
 
 .btn:hover {
-    opacity: 0.9; /* Slightly darken on hover */
+    opacity: 0.9; 
 }

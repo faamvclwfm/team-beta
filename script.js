@@ -3,14 +3,12 @@ function addNewForm() {
     let formSection = document.getElementById('form-section');
     let newForm = document.querySelector('.form-instance').cloneNode(true);
     
-    
     newForm.querySelectorAll('input, select').forEach(input => {
         input.value = input.defaultValue;
         if (input.tagName === 'SELECT') {
             input.selectedIndex = 0;
         }
-
-        
+ 
         input.addEventListener('input', updateSummary);
         input.addEventListener('change', updateSummary);
     });
@@ -25,7 +23,6 @@ function removeForm(button) {
     if (forms.length > 1) {
         button.parentElement.remove();
     } else {
-        // Reset inputs and selects when only one form is left
         let inputs = document.querySelectorAll('.form-instance input, .form-instance select');
         inputs.forEach(input => {
             if (input.tagName === 'SELECT') {
@@ -34,8 +31,6 @@ function removeForm(button) {
                 input.value = input.defaultValue;
             }
         });
-
-        // Clear summary table data but keep summary section visible
         document.getElementById('summary-body').innerHTML = '';
         document.getElementById('price-indication').innerText = "—";
         document.getElementById('additional-options').style.display = "none";
@@ -43,9 +38,6 @@ function removeForm(button) {
     
     updateSummary();
 }
-
-
-
 
 function updateSummary() {
     const dailyRates = {
