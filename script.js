@@ -33,7 +33,6 @@ function removeForm(button) {
         });
         document.getElementById('summary-body').innerHTML = '';
         document.getElementById('price-indication').innerText = "—";
-        document.getElementById('additional-options').style.display = "none";
     }
     
     updateSummary();
@@ -49,7 +48,7 @@ function updateSummary() {
     let forms = document.querySelectorAll('.form-instance');
     let summaryBody = document.getElementById('summary-body');
     let priceIndication = document.getElementById('price-indication');
-    let additionalOptions = document.getElementById('additional-options');
+    
 
     summaryBody.innerHTML = ''; 
     let totalCost = 0;
@@ -131,18 +130,6 @@ function updateSummary() {
         additionalOptions.style.display = "block"; // Show additional options
     } else {
         priceIndication.innerText = "—"; // Show dash if no valid data
-        additionalOptions.style.display = "none"; // Hide additional options
-        let checkBoxes=additionalOptions.querySelectorAll('input','checkbox')
-        for (let i = 0; i < checkBoxes.length; i++) {
-            let input = checkBoxes[i]
-            input.checked=false
-            
-        }
-        let textBoxes=additionalOptions.querySelectorAll('input','text')
-        for (let i = 0; i < textBoxes.length; i++) {
-            let input = textBoxes[i]
-            input.value=''
-        }
     }
 }
 document.getElementById('submitButton').addEventListener('click',()=>{
@@ -173,4 +160,3 @@ document.getElementById('submitButton').addEventListener('click',()=>{
        }
     }
 })
-
