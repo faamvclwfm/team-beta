@@ -140,6 +140,17 @@ function updateSummary() {
     } else {
         priceIndication.innerText = "—"; // Show dash if no valid data
         additionalOptions.style.display = "none"; // Hide additional options
+        let checkBoxes=additionalOptions.querySelectorAll('input','checkbox')
+        for (let i = 0; i < checkBoxes.length; i++) {
+            let input = checkBoxes[i]
+            input.checked=false
+            
+        }
+        let textBoxes=additionalOptions.querySelectorAll('input','text')
+        for (let i = 0; i < textBoxes.length; i++) {
+            let input = textBoxes[i]
+            input.value=''
+        }
     }
 }
 document.getElementById('submitButton').addEventListener('click',()=>{
@@ -153,7 +164,7 @@ document.getElementById('submitButton').addEventListener('click',()=>{
         console.log('Submitted')
     }else{
        if(mandatoryInput){
-            console.log(mandatoryInput)
+            console.log('')
        } else{
             errorMessageInput.style.display='block'
             return
