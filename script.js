@@ -145,6 +145,8 @@ function updateSummary() {
     });
 
     if (hasValidData) {
+        // Show additional options when the total cost is valid
+        document.getElementById('additional-options').style.display = 'block';
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
         priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
