@@ -142,5 +142,29 @@ function updateSummary() {
         additionalOptions.style.display = "none"; // Hide additional options
     }
 }
+document.getElementById('submitButton').addEventListener('click',()=>{
+    let errorMessageInput = document.getElementById('mandatoryEmailParagraph')
+    let errorMessageCheckBox = document.getElementById('mandatoryCheckBoxParagraph')
+    errorMessageInput.style.display='none'
+    errorMessageCheckBox.style.display='none'
+    let mandatoryInput = document.getElementById('mandatoryInput').value;
+    let mandatoryCheckBox=document.getElementById('mandatoryCheckBox');
+    if(mandatoryCheckBox.checked && mandatoryInput){
+        console.log('Submitted')
+    }else{
+       if(mandatoryInput){
+            console.log(mandatoryInput)
+       } else{
+            errorMessageInput.style.display='block'
+            return
 
+       }
+       if(mandatoryCheckBox.checked){
+            console.log('Checked!')
+       }else{
+            errorMessageCheckBox.style.display='block'
+            return
+       }
+    }
+})
 

@@ -84,16 +84,18 @@
             <div class="inputsField">
                 <input type="text" class="input-field" placeholder="First name" >
                 <input type="text" class="input-field" placeholder="Last name" >
-                <input type="text" class="input-field" placeholder="E-mail" required>
+                <input type="text" class="input-field" placeholder="E-mail" required id="mandatoryInput">
+                <p class="error-message " style="display: none   ;" id="mandatoryEmailParagraph">E-mail required</p>
             </div>
-            <div class="mandatoryCheckBox">
+            <div class="mandatoryCheckbox">
                 <div class="option-item">
-                    <input type="checkbox"required><label class="checkbox-label"> I agree to the privacy policy of nearshorefriends and give my consent to the processing of my personal data (mandatory)</label>
+                    <input type="checkbox"required id="mandatoryCheckBox" value="checked"><label class="checkbox-label"> I agree to the privacy policy of nearshorefriends and give my consent to the processing of my personal data (mandatory)</label>
                 </div>
+                <p class="error-message " style="display: none   ;" id="mandatoryCheckBoxParagraph">Required</p>
             </div>
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" id="submitButton">
         </div>
-
+        
     </div>    
 
     <script src="script.js"></script>

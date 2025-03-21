@@ -113,7 +113,7 @@ input[type="checkbox"] {
     width: 10%;
     
 } 
-.checkboxesField, .inputsField,.mandatoryCheckBox{
+.checkboxesField, .inputsField,.mandatoryCheckbox{
     margin-bottom: 5%;
 }
 .inputsField{
@@ -127,4 +127,7 @@ input[type='submit']{
     border: none;
     border-radius: 4px;
     cursor: pointer;
+}
+#mandatoryCheckBoxParagraph{
+    text-align: center;
 }
