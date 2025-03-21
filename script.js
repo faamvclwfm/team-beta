@@ -145,15 +145,16 @@ function updateSummary() {
     });
 
     if (hasValidData) {
-        // Show additional options when the total cost is valid
-        document.getElementById('additional-options').style.display = 'block';
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
         priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
         summarySection.style.display = 'block';
+        document.getElementById('additional-options').style.display = 'block'; // Show additional form
     } else {
         summarySection.style.display = 'none';
+        document.getElementById('additional-options').style.display = 'none'; // Hide additional form
     }
+    
 }
 document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.form-instance input, .form-instance select').forEach(input => {
