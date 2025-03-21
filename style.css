@@ -113,10 +113,18 @@ input[type="checkbox"] {
     width: 10%;
     
 } 
-.checkboxesField, .inputsField{
+.checkboxesField, .inputsField,.mandatoryCheckBox{
     margin-bottom: 5%;
 }
 .inputsField{
     width: 560px;
     justify-self: center;
+}
+input[type='submit']{
+    background-color: rgb(40, 55, 110);
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
 }
