@@ -156,12 +156,15 @@ function updateSummary() {
 document.getElementById('submitButton').addEventListener('click',()=>{
     let errorMessageInput = document.getElementById('mandatoryEmailParagraph')
     let errorMessageCheckBox = document.getElementById('mandatoryCheckBoxParagraph')
+    let additionalOptions = document.getElementById('additional-options');
+    let succesfulSent=additionalOptions.querySelector('h3')
     errorMessageInput.style.display='none'
     errorMessageCheckBox.style.display='none'
+    succesfulSent.style.display='none'
     let mandatoryInput = document.getElementById('mandatoryInput').value;
     let mandatoryCheckBox=document.getElementById('mandatoryCheckBox');
     if(mandatoryCheckBox.checked && mandatoryInput){
-        console.log('Submitted')
+        succesfulSent.style.display='block'
     }else{
        if(mandatoryInput){
             console.log('')
@@ -171,7 +174,7 @@ document.getElementById('submitButton').addEventListener('click',()=>{
 
        }
        if(mandatoryCheckBox.checked){
-            console.log('Checked!')
+            console.log('')
        }else{
             errorMessageCheckBox.style.display='block'
             return

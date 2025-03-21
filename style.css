@@ -120,13 +120,14 @@ input[type="checkbox"] {
     width: 560px;
     justify-self: center;
 }
-input[type='submit']{
+#submitButton{
     background-color: rgb(49, 64, 118);
     color: #fff;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
 }
 #mandatoryCheckBoxParagraph{
     text-align: center;
