@@ -3,68 +3,86 @@ body {
     background-color: #ffffff;
     padding: 20px;
 }
-.mainSection{
+
+.mainSection {
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Stack items vertically */
     margin: 0 auto;
-    width: 700px;
+    width: 100%;
+    max-width: 37.5em; /* Keep this value for large screens */
     border: 1px solid rgb(200,204,210);
-    justify-items: center;
-    padding: 20px 20px;
+    padding: 30px 30px;
     border-radius: 12px;
+    box-sizing: border-box;
 }
+
+#form-section {
+    flex-grow: 1; /* Allow the form to grow */
+}
+
+
 .container {
     background-color: rgb(244,244,244);
-    padding: 20px;
+    padding: 25px;
     border-radius: 8px;
-    width: 600px;
+    width: 100%;
     margin-bottom: 20px;
-    border:1px solid rgb(200 204 210)
-
+    border: 1px solid rgb(200 204 210);
+    box-sizing: border-box;
+    /* Ensuring it takes full width up to a certain limit */
+    max-width: 37.5em; /* 600px */
 }
+
 select, input {
     display: block;
-    margin: 10px 0;
-    padding: 10px;
+    margin: 12px 0;
+    padding: 12px;
     width: 100%;
     border-radius: 4px;
     border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 16px;
 }
-input{
-    width: 97%;
-}
+
 button {
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
 }
+
 #addMemberBtn {
-    background-color: rgb(13,17,31);
+    background-color: rgb(38, 47, 77);
     color: #fff;
 }
+
 .remove-btn {
     background: red;
     color: #fff;
 }
+
 #summary {
-    display: none;
+    display: block; /* Ensure it's displayed */
     margin-top: 20px;
-    margin-bottom: 20px;
     padding: 20px;
     background: #f4f4f4;
     border-radius: 8px;
-    width: 600px;
-    max-width: 600px;
+    width: 100%;
+    max-width: 37.5em; /* To match the container */
     border: 1px solid #c8ccd2;
+    box-sizing: border-box;
 }
 
 table {
-    width: 100%;
+    width: 100%; /* Ensure table takes full width */
     border-collapse: collapse;
-    margin-bottom: 15px;
 }
 
 th, td {
-    padding: 12px;
+    padding: 14px;
     text-align: center; 
     border: 2px solid #c8ccd2;
 }
@@ -76,14 +94,12 @@ th {
 
 td {
     background-color: #f0f1f3;
-    
 }
-
 
 tfoot td {
     font-weight: bold;
     background-color: #e0e1e7;
-    padding: 14px;
+    padding: 16px;
     border: 2px solid #c8ccd2;
 }
 
@@ -96,6 +112,7 @@ tfoot td:first-child {
     font-size: 12px;
     margin-top: 5px;
 }
+
 .option-item {
     display: flex;
     align-items: center;
@@ -107,28 +124,78 @@ tfoot td:first-child {
 }
 
 .option-item label {
-    max-width: 530px;
+    max-width: 31.125em;
+    margin-left: 1em;
 }
+
 input[type="checkbox"] {
-    width: 10%;
-    
+    width: auto;
 } 
-.checkboxesField, .inputsField,.mandatoryCheckbox{
+
+.checkboxesField, .inputsField, .mandatoryCheckbox {
     margin-bottom: 5%;
 }
-.inputsField{
-    width: 560px;
+
+.inputsField {
+    width: 100%;
     justify-self: center;
+    box-sizing: border-box;
 }
-#submitButton{
+
+#submitButton {
     background-color: rgb(49, 64, 118);
     color: #fff;
-    padding: 10px 15px;
+    padding: 12px 18px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     width: 100%;
+    box-sizing: border-box;
+    font-size: 16px;
 }
-#mandatoryCheckBoxParagraph{
+
+#mandatoryCheckBoxParagraph {
     text-align: center;
+}
+
+@media (max-width: 768px) {
+    .mainSection, .container, #summary {
+        width: 100%;
+        padding: 15px;
+    }
+    
+   
+}
+.summary-table {
+    margin-bottom: 20px; /* Adjust this value as needed */
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* Adjusts the gap */
+}
+
+.checkbox-label input {
+    margin-right: 10px; /* Adjusts the gap between the checkbox and the label */
+}
+
+.btn {
+    padding: 10px 20px; /* Adjust padding */
+    font-size: 16px; /* Adjust font size */
+    margin-bottom: 1%;
+}
+.btn-primary { 
+    color: white;
+    border: none;
+    border-radius: 5px; /* Optional rounded corners */
+}
+.btn-danger {
+    background-color: #dc3545; /* Danger button color */
+    color: white;
+    border: none;
+    border-radius: 5px; /* Optional rounded corners */
+}
+
+.btn:hover {
+    opacity: 0.9; /* Slightly darken on hover */
 }

@@ -46,8 +46,8 @@
                 <label for="duration">Duration (month)</label>
                 <input type="number" class="duration" min="1" oninput="updateSummary()">
                 
-                <button onclick="addNewForm()" id="addMemberBtn">Add New Member</button>
-                <button class="remove-btn" onclick="removeForm(this)">Remove</button>
+                <button onclick="addNewForm()" id="addMemberBtn" class="btn btn-primary">Add New Member</button>
+                <button class="remove-btn btn-danger btn" onclick="removeForm(this)">Remove</button>
             </div>
         </div>
         <div id="summary" style="display: block;">
@@ -68,7 +68,7 @@
                 </tfoot>
             </table>
         </div>
-
+    
         <div id="additional-options" class="container" style="display: none;">
             <div class="checkboxesField">
                 <div class="option-item">
@@ -98,7 +98,7 @@
         </div>
         
     </div>    
-
+    
     <script src="script.js"></script>
 </body>
 </html>
