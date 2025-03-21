@@ -48,6 +48,11 @@ function removeForm(button) {
 }
 
 function updateSummary() {
+    const dailyRates = {
+        "Junior": 400,
+        "Midlevel": 500,
+        "Senior": 600
+    };
     let forms = document.querySelectorAll('.form-instance');
     let summaryBody = document.getElementById('summary-body');
     let summarySection = document.getElementById('summary');
@@ -62,7 +67,7 @@ function updateSummary() {
         "Eastern Europe": 18.5,
         "Western Europe": 17.5,
         "North Africa": 17.5,
-        "Offshore": 19.5
+        "Southeast Asia": 19.5
     };
 
     forms.forEach(form => {
@@ -100,7 +105,6 @@ function updateSummary() {
         }
         
         let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
-
         // Remove existing error messages
         developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
         durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
@@ -131,13 +135,13 @@ function updateSummary() {
         }
         hasValidData = true;
 
-        let cost = developers * parseFloat(role.value) * parseFloat(level.value) * duration * workDays;
+        let cost = developers  * dailyRates[level.options[level.selectedIndex].text] * duration * workDays;
         totalCost += cost;
 
         let row = `<tr>
-            <td>${role.options[role.selectedIndex].text}</td>
-            <td>${level.options[level.selectedIndex].text}</td>
-            <td>${cost.toFixed(2)} €</td>
+        <td>${role.options[role.selectedIndex].text}</td>
+        <td>${level.options[level.selectedIndex].text}</td>
+        <td>${dailyRates[level.options[level.selectedIndex].text]} €</td>
         </tr>`;
         
         summaryBody.innerHTML += row;
