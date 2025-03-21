@@ -77,42 +77,54 @@ function updateSummary() {
         let developersInput = form.querySelector('.developers');
         let durationInput = form.querySelector('.duration');
 
-        if (!role.value || !level.value || !region.value) return;
-
         let developers = parseInt(developersInput.value) || 0;
         let duration = parseInt(durationInput.value) || 0;
         let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
+
+        // Role and Level Handling
+        let selectedRole = role.value ? role.options[role.selectedIndex].text : "—";
+        let selectedLevel = level.value ? level.options[level.selectedIndex].text : "—";
+        let dailyRate = level.value ? dailyRates[selectedLevel] + " €" : "—";
 
         // Remove previous error messages
         developersInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
         durationInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
 
-        // Validation messages
+        developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
+        durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
+
+        // Validate "Number of IT Specialists"
         if (developers < 1) {
             let errorMessage = document.createElement('p');
-            errorMessage.classList.add('error-message');
             errorMessage.textContent = 'At least 1 specialist required';
+            errorMessage.classList.add('error-message');
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
+
+            // **Clear the duration field if IT specialists input is invalid**
+            durationInput.value = ''; 
+            return; // Stop processing this form
         }
 
+        // Validate "Duration"
         if (duration < 1) {
             let errorMessage = document.createElement('p');
-            errorMessage.classList.add('error-message');
             errorMessage.textContent = 'At least 1 month required';
+            errorMessage.classList.add('error-message');
             durationInput.parentNode.insertBefore(errorMessage, durationInput.nextSibling);
+            return; // Stop processing this form
         }
 
-        // If any validation fails, stop processing this row
-        if (developers < 1 || duration < 1 || workDays === 0) return;
-
-        hasValidData = true;
-        let cost = developers * dailyRates[level.options[level.selectedIndex].text] * duration * workDays;
-        totalCost += cost;
+        // If all required values are selected, calculate cost
+        if (role.value && level.value && region.value && developers >= 1 && duration >= 1 && workDays > 0) {
+            hasValidData = true;
+            let cost = developers * dailyRates[selectedLevel] * duration * workDays;
+            totalCost += cost;
+        }
 
         let row = `<tr>
-            <td>${role.options[role.selectedIndex].text}</td>
-            <td>${level.options[level.selectedIndex].text}</td>
-            <td>${dailyRates[level.options[level.selectedIndex].text]} €</td>
+            <td>${selectedRole}</td>
+            <td>${selectedLevel}</td>
+            <td>${dailyRate}</td>
         </tr>`;
         
         summaryBody.innerHTML += row;
@@ -130,4 +142,5 @@ function updateSummary() {
         additionalOptions.style.display = "none"; // Hide additional options
     }
 }
+
 
