@@ -3,20 +3,20 @@ function addNewForm() {
     let formSection = document.getElementById('form-section');
     let newForm = document.querySelector('.form-instance').cloneNode(true);
     
-    // Reset input values
+    
     newForm.querySelectorAll('input, select').forEach(input => {
         input.value = input.defaultValue;
         if (input.tagName === 'SELECT') {
             input.selectedIndex = 0;
         }
 
-        // Ensure event listeners are added only once
+        
         input.addEventListener('input', updateSummary);
         input.addEventListener('change', updateSummary);
     });
 
     formSection.appendChild(newForm);
-    updateSummary(); // Update summary immediately
+    updateSummary(); 
 }
 
 function removeForm(button) {
@@ -24,20 +24,20 @@ function removeForm(button) {
     let summaryBody = document.getElementById('summary-body');
     let summarySection = document.getElementById('summary');
 
-    // Ensure at least one form remains
+    
     if (forms.length > 1) {
         button.parentElement.remove();
-    } else if (forms.length === 1) { // When only one form is left
-        summaryBody.innerHTML = ''; // Clear summary table
-        summarySection.style.display = 'none'; // Hide summary section
+    } else if (forms.length === 1) { 
+        summaryBody.innerHTML = ''; 
+        summarySection.style.display = 'none'; 
 
-        // Reset all inputs and selects to default values
+        
         let inputs = document.querySelectorAll('.form-instance input, .form-instance select');
         inputs.forEach(input => {
             if (input.tagName === 'SELECT') {
-                input.selectedIndex = 0; // Reset select options to default
+                input.selectedIndex = 0; 
             } else {
-                input.value = input.defaultValue; // Reset input values
+                input.value = input.defaultValue; 
             }
         });
     }
@@ -59,7 +59,7 @@ function updateSummary() {
     let totalCost = 0;
     let hasValidData = false;
 
-    // Workdays per month per region
+    
     const workDaysPerMonth = {
         "Eastern Europe": 18.5,
         "Western Europe": 17.5,
@@ -80,21 +80,21 @@ function updateSummary() {
         let developers = parseInt(developersInput.value) || 0;
         let duration = parseInt(durationInput.value) || 0;
 
-        // Clear previous error messages
+        
         let errorMessages = developersInput.parentNode.querySelectorAll('p');
         errorMessages.forEach(msg => msg.remove());
         errorMessages = durationInput.parentNode.querySelectorAll('p');
         errorMessages.forEach(msg => msg.remove());
 
-        // Validate inputs
-        if (developers < 1) { // Allow 1 as a valid input
+        
+        if (developers < 1) { 
             let errorMessage = document.createElement('p');
             errorMessage.classList.add('error-message')
             errorMessage.textContent = 'At least 1 specialist required';
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
         }
 
-        if (duration < 1) { // Allow 1 as a valid input
+        if (duration < 1) { 
             let errorMessage = document.createElement('p');
             errorMessage.classList.add('error-message')
             errorMessage.textContent = 'At least 1 month required';
@@ -102,29 +102,29 @@ function updateSummary() {
         }
         
         let workDays = workDaysPerMonth[region.options[region.selectedIndex].text] || 0;
-        // Remove existing error messages
+        
         developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
         durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
 
-        // Validate "Number of IT Specialists"
+       
         if (developers < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 specialist required';
             errorMessage.classList.add('error-message');
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
 
-            // **Clear the duration field if IT specialists input is invalid**
+            
             durationInput.value = ''; 
-            return; // Stop processing this form
+            return; 
         }
 
-        // Validate "Duration"
+        
         if (duration < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 month required';
             errorMessage.classList.add('error-message');
             durationInput.parentNode.insertBefore(errorMessage, durationInput.nextSibling);
-            return; // Stop processing this form
+            return; 
         }
 
         if (workDays === 0) {
@@ -159,5 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
         input.addEventListener('change', updateSummary);
     });
 
-    updateSummary(); // Ensure summary updates on initial load
+    updateSummary(); 
 });
