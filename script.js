@@ -1,30 +1,22 @@
+
 function addNewForm() {
     let formSection = document.getElementById('form-section');
     let newForm = document.querySelector('.form-instance').cloneNode(true);
-    newForm.querySelectorAll('input, select').forEach(input => {
-        input.value = input.defaultValue; // Reset input values
-        if (input.tagName === 'SELECT') {
-            input.selectedIndex = 0; // Set select options to default
-        }
-    });
-    formSection.appendChild(newForm);
     
-    // Add event listeners to update summary on input change for initial form
+    // Reset input values
     newForm.querySelectorAll('input, select').forEach(input => {
-        input.addEventListener('input', updateSummary);
-        input.addEventListener('change', updateSummary);
-    });
-    // Ensure summary updates immediately on any input change
-    newForm.querySelectorAll('input, select').forEach(input => {
-        input.addEventListener('input', updateSummary);
-        input.addEventListener('change', updateSummary);
-    });
-    newForm.querySelectorAll('input, select').forEach(input => {
+        input.value = input.defaultValue;
+        if (input.tagName === 'SELECT') {
+            input.selectedIndex = 0;
+        }
+
+        // Ensure event listeners are added only once
         input.addEventListener('input', updateSummary);
         input.addEventListener('change', updateSummary);
     });
 
-    updateSummary();
+    formSection.appendChild(newForm);
+    updateSummary(); // Update summary immediately
 }
 
 function removeForm(button) {
@@ -161,3 +153,11 @@ function updateSummary() {
         summarySection.style.display = 'none';
     }
 }
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.form-instance input, .form-instance select').forEach(input => {
+        input.addEventListener('input', updateSummary);
+        input.addEventListener('change', updateSummary);
+    });
+
+    updateSummary(); // Ensure summary updates on initial load
+});
