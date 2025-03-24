@@ -2,12 +2,9 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     padding: 20px;
-    user-select: grey;
+    user-select: none;
 }
 
-::selection {
-    color: grey; 
-  }
 
 .mainSection {
     display: flex; 
