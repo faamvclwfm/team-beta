@@ -83,7 +83,7 @@ function updateSummary() {
 
         let selectedRole = role.value ? role.options[role.selectedIndex].text : "—";
         let selectedLevel = level.value ? level.options[level.selectedIndex].text : "—";
-        let dailyRate = level.value ? dailyRates[selectedLevel] + " €" : "—";
+        let dailyRate = level.value ? dailyRates[selectedLevel] + " " : "—";
 
         developersInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
         durationInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
@@ -130,7 +130,7 @@ function updateSummary() {
     if (hasValidData) {
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
-        priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
+        priceIndication.innerText = `${lowerBound.toFixed(0)}  - ${upperBound.toFixed(0)} `;
         
     } else {
         priceIndication.innerText = "—"; 

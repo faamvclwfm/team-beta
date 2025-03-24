@@ -43,7 +43,7 @@
                 <label for="developers">Number of IT specialist</label>
                 <input type="number" class="developers" min="1" value="1" id="developers">
     
-                <label for="duration">Duration (month)</label>
+                <label for="duration">Duration (months)</label>
                 <input type="number" class="duration" min="1" oninput="updateSummary()">
                 
                 <button onclick="addNewForm()" id="addMemberBtn" class="btn btn-primary">Add New Member</button>
@@ -56,13 +56,13 @@
                     <tr>
                         <th>Role</th>
                         <th>Level</th>
-                        <th>Daily rate</th>
+                        <th>Daily rate (€)</th>
                     </tr>
                 </thead>
                 <tbody id="summary-body"></tbody>
                 <tfoot>
                     <tr>
-                        <td colspan="2">Price indication (+-10%):</td>
+                        <td colspan="2">Price indication (+-10%)</td>
                         <td id="price-indication">—</td>
                     </tr>
                 </tfoot>
