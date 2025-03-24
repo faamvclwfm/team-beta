@@ -5,7 +5,9 @@ body {
     user-select: grey;
 }
 
-
+::selection {
+    color: grey; 
+  }
 
 .mainSection {
     display: flex; 
