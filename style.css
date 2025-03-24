@@ -2,7 +2,10 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ffffff;
     padding: 20px;
+    user-select: none;
 }
+
+
 
 .mainSection {
     display: flex; 
