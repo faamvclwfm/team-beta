@@ -42,19 +42,19 @@ select, input {
     padding: 12px;
     width: 100%;
     border-radius: 4px;
-    border: 1px solid darkgrey; /* Set border color to dark grey */
+    border: 1px solid darkgrey; 
     box-sizing: border-box;
     font-size: 16px;
-    color: black; /* Set font color to black */
+    color: black; 
 }
 
 select:focus {
-    outline: none; /* Remove default outline */
-    border: 1px solid darkgrey; /* Set border color to dark grey */
+    outline: none; 
+    border: 1px solid darkgrey; 
 }
 
 select option {
-    color: black; /* Set the color of the selected option to black */
+    color: black; 
 }
 
 button {

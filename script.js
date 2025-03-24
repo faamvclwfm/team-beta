@@ -88,21 +88,15 @@ function updateSummary() {
         developersInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
         durationInput.parentNode.querySelectorAll('.error-message').forEach(msg => msg.remove());
 
-        developersInput.nextElementSibling?.classList.contains('error-message') && developersInput.nextElementSibling.remove();
-        durationInput.nextElementSibling?.classList.contains('error-message') && durationInput.nextElementSibling.remove();
-        
         if (developers < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 specialist required';
             errorMessage.classList.add('error-message');
             developersInput.parentNode.insertBefore(errorMessage, developersInput.nextSibling);
-
-        
             durationInput.value = ''; 
             return; 
         }
 
-        
         if (duration < 1) {
             let errorMessage = document.createElement('p');
             errorMessage.textContent = 'At least 1 month required';
@@ -111,7 +105,6 @@ function updateSummary() {
             return; 
         }
 
-       
         if (role.value && level.value && region.value && developers >= 1 && duration >= 1 && workDays > 0) {
             hasValidData = true;
             let cost = developers * dailyRates[selectedLevel] * duration * workDays;
@@ -130,12 +123,19 @@ function updateSummary() {
     if (hasValidData) {
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
-        priceIndication.innerText = `${lowerBound.toFixed(0)}  - ${upperBound.toFixed(0)} `;
+
+        
+        function formatNumber(num) {
+            return num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        priceIndication.innerText = `${formatNumber(lowerBound)} - ${formatNumber(upperBound)}`;
         
     } else {
         priceIndication.innerText = "—"; 
     }
 }
+
 
 
 document.getElementById('submitButton').addEventListener('click',()=>{
