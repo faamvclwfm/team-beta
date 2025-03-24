@@ -212,3 +212,6 @@ input[type="checkbox"] {
 .btn:hover {
     opacity: 0.9; 
 }
+input[type="checkbox"] {
+    accent-color: rgb(49, 64, 118);
+}

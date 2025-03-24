@@ -131,7 +131,7 @@ function updateSummary() {
         let lowerBound = totalCost * 0.9;
         let upperBound = totalCost * 1.1;
         priceIndication.innerText = `${lowerBound.toFixed(2)} € - ${upperBound.toFixed(2)} €`;
-        additionalOptions.style.display = "block"; 
+        
     } else {
         priceIndication.innerText = "—"; 
     }
